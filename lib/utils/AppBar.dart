@@ -5,18 +5,20 @@ import 'package:get/get.dart';
 import 'AdaptiveTextSize.dart';
 import 'Color.dart';
 
-AppBar dashboardAppbar({title, BuildContext context}) {
+AppBar dashboardAppbar({title, BuildContext context, Function leading}) {
   return AppBar(
     backgroundColor: white,
     elevation: 0.0,
-    leading: BackButton(
-      color: Colors.black,
+    leading: IconButton(
+      onPressed: leading,
+      icon: Icon(Icons.menu),
+      color: backgroundSecondary,
     ),
     centerTitle: true,
     title: Text(
       title,
-      style:
-          TextStyle(fontSize: 16, color: black.withOpacity(.5), fontFamily: 'Avenir'),
+      style: TextStyle(
+          fontSize: 16, color: black.withOpacity(.5), fontFamily: 'Avenir'),
     ),
     actions: [
       IconButton(
@@ -49,12 +51,12 @@ AppBar searchAppbar({title, BuildContext context}) {
           decoration: InputDecoration(
             hintText: title,
             border: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: backgroundSecondary.withOpacity(.1), width: 2),
+              borderSide: BorderSide(
+                  color: backgroundSecondary.withOpacity(.1), width: 2),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: backgroundSecondary.withOpacity(.1), width: 2),
+              borderSide: BorderSide(
+                  color: backgroundSecondary.withOpacity(.1), width: 2),
             ),
             labelStyle: TextStyle(
               color: Colors.grey,
@@ -66,5 +68,3 @@ AppBar searchAppbar({title, BuildContext context}) {
     ),
   );
 }
-
-

@@ -9,14 +9,13 @@ import 'package:green_food/utils/Color.dart';
 import 'package:green_food/utils/Const.dart';
 import 'package:green_food/utils/Style.dart';
 
-
-
 import 'Controller/DashBoardController.dart';
 import 'UI/Search/Search.dart';
 import 'UI/views/base_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class DashBoard extends StatelessWidget {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final dashboardController = Get.put(DashBoardController());
@@ -28,20 +27,122 @@ class DashBoard extends StatelessWidget {
           builder: (context, sizingInformation) {
             return SafeArea(
               child: Scaffold(
+                key: scaffoldKey,
                 backgroundColor: backgroundTertiary,
+                drawer: Drawer(
+                  child: Container(
+                    color: white,
+                    child: Column(
+                      children: [
+                        Container(
+                          color: backgroundSecondary,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 13),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 54,
+                                    width: 54,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                          "assets/images/image1.png",
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 16,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Onim Islam",
+                                        style: drawerTitle().copyWith(
+                                          fontSize: AdaptiveTextSize()
+                                              .getadaptiveTextSize(
+                                            Get.context,
+                                            sectionTitleFontSize + 2,
+                                          ),
+                                        ),
+                                      ),
+                                      // TextButton(
+                                      //   onPressed: () {},
+                                      //   style: ButtonStyle(shape: ),
+                                      //   child: Text(
+                                      //     "Edit",
+                                      //     style: drawerButtonText(),
+                                      //   ),
+                                      // ),
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 16, vertical: 3),
+                                        decoration: BoxDecoration(
+                                          color: white,
+                                          borderRadius:
+                                              BorderRadius.circular(64),
+                                        ),
+                                        child: Text(
+                                          "Edit",
+                                          style: drawerButtonText().copyWith(
+                                            fontSize: AdaptiveTextSize()
+                                                .getadaptiveTextSize(
+                                              Get.context,
+                                              sectionSpacing,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 6),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(3),
+                                  color: white,
+                                ),
+                                child: Container(
+                                  height: 23.07,
+                                  width: 17,
+                                  child: Image.asset(
+                                    "assets/images/badge.png",
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 appBar: dashboardAppbar(
-                  title:
-                      ' 147 C, Road 7, Block C, Banasree', /*context: context*/
+                  title: ' 147 C, Road 7, Block C, Banasree',
+                  /*context: context*/
+                  leading: () {
+                    scaffoldKey.currentState.openDrawer();
+                  },
                 ),
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
-
-
                       Container(
                         height: 150,
                         width: double.infinity,
-                        padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing),
                         decoration: BoxDecoration(
                           color: white,
                           borderRadius: BorderRadius.only(
@@ -54,8 +155,10 @@ class DashBoard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Header(
-                              subHeader: 'Select your category and get delivery on time!',
-                              header: 'Good Evening, Onim', /*context:context*/
+                              subHeader:
+                                  'Select your category and get delivery on time!',
+                              header: 'Good Evening, Onim',
+                              /*context:context*/
                               sizingInformation: sizingInformation,
                             ),
                             SizedBox(
@@ -68,8 +171,7 @@ class DashBoard extends StatelessWidget {
                                     child: Container(
                                       height: 52,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(3),
+                                        borderRadius: BorderRadius.circular(3),
                                         color: backgroundSecondary,
                                       ),
                                       child: Center(
@@ -88,13 +190,14 @@ class DashBoard extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: sectionSpacing,),
+                                  SizedBox(
+                                    width: sectionSpacing,
+                                  ),
                                   Expanded(
                                     child: Container(
                                       height: 52,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(3),
+                                        borderRadius: BorderRadius.circular(3),
                                         color: white,
                                         border: Border.all(
                                           color: backgroundSecondary,
@@ -118,13 +221,14 @@ class DashBoard extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: sectionSpacing,),
+                                  SizedBox(
+                                    width: sectionSpacing,
+                                  ),
                                   Expanded(
                                     child: Container(
                                       height: 52,
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(3),
+                                        borderRadius: BorderRadius.circular(3),
                                         color: white,
                                         border: Border.all(
                                           color: backgroundSecondary,
@@ -158,7 +262,8 @@ class DashBoard extends StatelessWidget {
                         height: sectionSpacing * 2,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing),
                         child: Row(
                           children: [
                             Expanded(
@@ -213,24 +318,29 @@ class DashBoard extends StatelessWidget {
                       ),
                       SizedBox(height: sectionSpacing * 2),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing),
                         child: Header(
-                            header: "Gift of the friday",
-                            subHeader:
-                                "Select your category and get delivery on time",sizingInformation: sizingInformation,),
+                          header: "Gift of the friday",
+                          subHeader:
+                              "Select your category and get delivery on time",
+                          sizingInformation: sizingInformation,
+                        ),
                       ),
                       SizedBox(
                         height: sectionSpacing * 2,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing-5),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing - 5),
                         child: Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: CarouselSlider(
                             options: CarouselOptions(
-                              height: (sizingInformation.localwidgetsize.height /
-                                      rootContainerSpacing) *
-                                  6, // making height 240
+                              height:
+                                  (sizingInformation.localwidgetsize.height /
+                                          rootContainerSpacing) *
+                                      6, // making height 240
                               viewportFraction: 1,
                               autoPlayInterval: Duration(seconds: 2),
                               autoPlay: true,
@@ -266,18 +376,20 @@ class DashBoard extends StatelessWidget {
                         height: rootContainerSpacing * 2,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing),
                         child: Header(
                             header: "Restaurant of the month",
                             subHeader:
-                                "Place the order hurry and enjoy the meal!!!",sizingInformation: sizingInformation),
+                                "Place the order hurry and enjoy the meal!!!",
+                            sizingInformation: sizingInformation),
                       ),
                       SizedBox(
-                        height: rootContainerSpacing*2,
+                        height: rootContainerSpacing * 2,
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: rootContainerSpacing-5),
+                            horizontal: rootContainerSpacing - 5),
                         child: Container(
                           height: sizingInformation.localwidgetsize.height /
                                   19 *
@@ -303,11 +415,13 @@ class DashBoard extends StatelessWidget {
                         height: rootContainerSpacing * 2,
                       ),
                       Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing),
                         child: Header(
                             header: 'Order Again',
                             subHeader:
-                                'Place the order hurry and enjoy the meal!!!',sizingInformation: sizingInformation),
+                                'Place the order hurry and enjoy the meal!!!',
+                            sizingInformation: sizingInformation),
                       ),
                       SizedBox(
                         height: rootContainerSpacing * 2,
@@ -339,48 +453,52 @@ class DashBoard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height:  rootContainerSpacing * 2,
+                              height: rootContainerSpacing * 2,
                             ),
                             Padding(
-                              padding:  EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: rootContainerSpacing),
                               child: Header(
-                                header: "Delicious bite 24/7",
-                                subHeader:
-                                    "Make your dish delicious, place the order hurry!!!",sizingInformation: sizingInformation
-                              ),
+                                  header: "Delicious bite 24/7",
+                                  subHeader:
+                                      "Make your dish delicious, place the order hurry!!!",
+                                  sizingInformation: sizingInformation),
                             ),
                             SizedBox(
                               height: rootContainerSpacing * 2,
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: rootContainerSpacing),
                               child: Container(
                                 child: Vertical(
-                                  image: "assets/images/delicious.png",
-                                  shop: 'Sultan’s Dine Banasree',
-                                  rating: '4.8',
-                                  count: "(2.3K)",
-                                  description: "Beef, Mutton, Biriyani, Desserts",
-                                  offer: "TK 15 Delivery fee",
-                                    sizingInformation: sizingInformation
-                                ),
+                                    image: "assets/images/delicious.png",
+                                    shop: 'Sultan’s Dine Banasree',
+                                    rating: '4.8',
+                                    count: "(2.3K)",
+                                    description:
+                                        "Beef, Mutton, Biriyani, Desserts",
+                                    offer: "TK 15 Delivery fee",
+                                    sizingInformation: sizingInformation),
                               ),
                             ),
                           ],
                         ),
                       ),
                       SizedBox(
-                        height:  rootContainerSpacing * 2,
+                        height: rootContainerSpacing * 2,
                       ),
                       Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: rootContainerSpacing),
                         child: Header(
                             header: 'Current Offers',
                             subHeader:
-                                'Place the order hurry and enjoy the meal!!!',sizingInformation: sizingInformation),
+                                'Place the order hurry and enjoy the meal!!!',
+                            sizingInformation: sizingInformation),
                       ),
                       SizedBox(
-                        height:  rootContainerSpacing * 2,
+                        height: rootContainerSpacing * 2,
                       ),
                       Horizontal(
                         image: "assets/images/current.png",
@@ -390,7 +508,9 @@ class DashBoard extends StatelessWidget {
                         items: 'Beef, Mutton, Biriyani, Desserts',
                         offer: 'TK 15 Delivery fee',
                       ),
-                      SizedBox(height:  rootContainerSpacing * 2,),
+                      SizedBox(
+                        height: rootContainerSpacing * 2,
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: white,
@@ -406,25 +526,23 @@ class DashBoard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height:  rootContainerSpacing * 2,
+                              height: rootContainerSpacing * 2,
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: rootContainerSpacing),
                               child: Header(
-                                header: "Nearby Restaurants",
-                                subHeader:
-                                    "Make your dish delicious, place the order hurry!!!",sizingInformation: sizingInformation
-                              ),
+                                  header: "Nearby Restaurants",
+                                  subHeader:
+                                      "Make your dish delicious, place the order hurry!!!",
+                                  sizingInformation: sizingInformation),
                             ),
                             SizedBox(
-                              height:  rootContainerSpacing * 2,
+                              height: rootContainerSpacing * 2,
                             ),
                             Container(
                               padding: EdgeInsets.only(
-                                  left: 19,
-                                  right: 10,
-                                  top: 0,
-                                  bottom: 2),
+                                  left: 19, right: 10, top: 0, bottom: 2),
                               child: Vertical(
                                 image: "assets/images/nearby.png",
                                 shop: 'Sultan’s Dine Banasree',
@@ -449,7 +567,26 @@ class DashBoard extends StatelessWidget {
     );
   }
 
-  Widget Header({String header, String subHeader,SizingInformation sizingInformation}) {
+  Widget drawerComponent() {
+    Column(
+      children: [
+        Container(
+          color: backgroundSecondary,
+          child: ListTile(
+            leading: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(color: black),
+              //child: Image.asset("assets/images/image1.png"),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget Header(
+      {String header, String subHeader, SizingInformation sizingInformation}) {
     return Container(
       width: double.infinity,
       //padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing),
@@ -484,20 +621,23 @@ class DashBoard extends StatelessWidget {
                         color: Colors.black,
                         fontSize: AdaptiveTextSize()
                             .getadaptiveTextSize(Get.context, 18),
-                        fontWeight: FontWeight.w900),overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.w900),
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
                     height: 2,
                   ),
                   SizedBox(
-                    width: sizingInformation.localwidgetsize.width/1.4,
+                    width: sizingInformation.localwidgetsize.width / 1.4,
                     child: Text(
                       subHeader,
                       style: TextStyle(
                           color: Colors.black45,
                           fontSize: AdaptiveTextSize()
                               .getadaptiveTextSize(Get.context, 12),
-                          fontWeight: FontWeight.w400),overflow: TextOverflow.ellipsis,maxLines: 1,
+                          fontWeight: FontWeight.w400),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ),
                 ],
@@ -520,7 +660,7 @@ class DashBoard extends StatelessWidget {
   }) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: rootContainerSpacing - 5),
-      height:   245,
+      height: 245,
       color: backgroundTertiary,
       child: ListView.builder(
         shrinkWrap: true,
@@ -558,24 +698,29 @@ class DashBoard extends StatelessWidget {
                                   Text(
                                     items,
                                     style: sectionTitle().copyWith(
-                                      fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionTitleFontSize-6)
-                                    ),
+                                        fontSize: AdaptiveTextSize()
+                                            .getadaptiveTextSize(Get.context,
+                                                sectionTitleFontSize - 6)),
                                   ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  Icon(Foundation.star,
-                                      color: backgroundSecondary,
-                                      size: AdaptiveTextSize()
-                                          .getadaptiveTextSize(context, sectionSubTitleFontSize),),
+                                  Icon(
+                                    Foundation.star,
+                                    color: backgroundSecondary,
+                                    size: AdaptiveTextSize()
+                                        .getadaptiveTextSize(
+                                            context, sectionSubTitleFontSize),
+                                  ),
                                   SizedBox(
                                     width: 5,
                                   ),
                                   Text(
                                     rating,
                                     style: sectionSubTitle().copyWith(
-                                        fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                                    ),
+                                        fontSize: AdaptiveTextSize()
+                                            .getadaptiveTextSize(Get.context,
+                                                sectionSubTitleFontSize)),
                                   ),
                                   SizedBox(
                                     height: 2,
@@ -587,8 +732,9 @@ class DashBoard extends StatelessWidget {
                           Text(
                             description,
                             style: sectionSubTitle().copyWith(
-                                fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                            ),
+                                fontSize: AdaptiveTextSize()
+                                    .getadaptiveTextSize(
+                                        Get.context, sectionSubTitleFontSize)),
                           ),
                           SizedBox(
                             height: 2,
@@ -596,8 +742,9 @@ class DashBoard extends StatelessWidget {
                           Text(
                             offer,
                             style: sectionSubTitle().copyWith(
-                                fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                            ),
+                                fontSize: AdaptiveTextSize()
+                                    .getadaptiveTextSize(
+                                        Get.context, sectionSubTitleFontSize)),
                           ),
                         ],
                       ),
@@ -612,15 +759,15 @@ class DashBoard extends StatelessWidget {
     );
   }
 
-  Widget Vertical(
-      {String image,
-      String shop,
-      String rating,
-      String count,
-      String description,
-      String offer,
-      SizingInformation sizingInformation,
-      }) {
+  Widget Vertical({
+    String image,
+    String shop,
+    String rating,
+    String count,
+    String description,
+    String offer,
+    SizingInformation sizingInformation,
+  }) {
     return ListView.builder(
       scrollDirection: Axis.vertical,
       physics: ScrollPhysics(),
@@ -628,9 +775,11 @@ class DashBoard extends StatelessWidget {
       itemCount: 3,
       itemBuilder: (context, index) {
         return Padding(
-          padding: EdgeInsets.only(bottom: rootContainerSpacing ),
+          padding: EdgeInsets.only(bottom: rootContainerSpacing),
           child: Container(
-            height: (sizingInformation.localwidgetsize.height/rootContainerSpacing)*3.94,
+            height: (sizingInformation.localwidgetsize.height /
+                    rootContainerSpacing) *
+                3.94,
             width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -654,9 +803,10 @@ class DashBoard extends StatelessWidget {
                           Text(
                             shop,
                             style: sectionTitle().copyWith(
-                               fontWeight: FontWeight.w400,
-                                fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionTitleFontSize-6)
-                            ),
+                                fontWeight: FontWeight.w400,
+                                fontSize: AdaptiveTextSize()
+                                    .getadaptiveTextSize(
+                                        Get.context, sectionTitleFontSize - 6)),
                           ),
                           SizedBox(
                             width: 10,
@@ -672,8 +822,9 @@ class DashBoard extends StatelessWidget {
                           Text(
                             rating,
                             style: sectionSubTitle().copyWith(
-                                fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                            ),
+                                fontSize: AdaptiveTextSize()
+                                    .getadaptiveTextSize(
+                                        Get.context, sectionSubTitleFontSize)),
                           ),
                           SizedBox(
                             width: 5,
@@ -681,8 +832,9 @@ class DashBoard extends StatelessWidget {
                           Text(
                             '(2.3K)',
                             style: sectionSubTitle().copyWith(
-                                fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                            ),
+                                fontSize: AdaptiveTextSize()
+                                    .getadaptiveTextSize(
+                                        Get.context, sectionSubTitleFontSize)),
                           ),
                         ],
                       ),
@@ -710,8 +862,8 @@ class DashBoard extends StatelessWidget {
                 Text(
                   description,
                   style: sectionSubTitle().copyWith(
-                      fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                  ),
+                      fontSize: AdaptiveTextSize().getadaptiveTextSize(
+                          Get.context, sectionSubTitleFontSize)),
                 ),
                 SizedBox(
                   height: 2,
@@ -720,8 +872,8 @@ class DashBoard extends StatelessWidget {
                   offer,
                   style: sectionSubTitle().copyWith(
                       color: black,
-                      fontSize: AdaptiveTextSize().getadaptiveTextSize(Get.context, sectionSubTitleFontSize)
-                  ),
+                      fontSize: AdaptiveTextSize().getadaptiveTextSize(
+                          Get.context, sectionSubTitleFontSize)),
                 ),
               ],
             ),

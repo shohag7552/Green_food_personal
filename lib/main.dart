@@ -6,7 +6,6 @@ import 'package:splashscreen/splashscreen.dart';
 import 'DashBoard.dart';
 import 'UI/Authentication/login_signup.dart';
 
-
 void main() => runApp(
       DevicePreview(
         enabled: !kReleaseMode,
@@ -38,7 +37,7 @@ class Splash extends StatelessWidget {
         "assets/images/logo.png",
         alignment: Alignment.center,
       ),
-      navigateAfterSeconds: LoginSignupPage(),
+      navigateAfterSeconds: DashBoard(),
     );
   }
 }
