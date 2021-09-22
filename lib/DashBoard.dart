@@ -75,14 +75,6 @@ class DashBoard extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      // TextButton(
-                                      //   onPressed: () {},
-                                      //   style: ButtonStyle(shape: ),
-                                      //   child: Text(
-                                      //     "Edit",
-                                      //     style: drawerButtonText(),
-                                      //   ),
-                                      // ),
                                       Container(
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 16, vertical: 3),
@@ -124,6 +116,142 @@ class DashBoard extends StatelessWidget {
                             ],
                           ),
                         ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 16),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: backgroundSecondary,
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Gold Badge",
+                                    style: drawerTitle().copyWith(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: AdaptiveTextSize()
+                                          .getadaptiveTextSize(
+                                              Get.context, sectionSpacing + 2),
+                                    ),
+                                  ),
+                                  Text(
+                                    "See All",
+                                    style: drawerTitle().copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: AdaptiveTextSize()
+                                          .getadaptiveTextSize(
+                                              Get.context, sectionSpacing + 2),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "7389/1000",
+                                    style: drawerTitle().copyWith(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: AdaptiveTextSize()
+                                          .getadaptiveTextSize(Get.context,
+                                              sectionTitleFontSize),
+                                    ),
+                                  ),
+                                  Text(
+                                    " pts  (75%)",
+                                    style: drawerTitle().copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: AdaptiveTextSize()
+                                          .getadaptiveTextSize(
+                                              Get.context, sectionSpacing + 2),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 6.0,
+                              ),
+                              //Percentage Bar..
+                              LinearProgressIndicator(
+                                backgroundColor: white.withOpacity(0.20),
+                                minHeight: 14.0,
+                                value: 0.75,
+                                color: orange,
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            children: [
+                              drawerList(
+                                icon: Icons.favorite_border,
+                                title: "Favorites",
+                              ),
+                              drawerList(
+                                icon: Icons.shopping_bag_outlined,
+                                title: "Orders",
+                              ),
+                              drawerList(
+                                icon: Icons.shopping_cart_outlined,
+                                title: "Cart",
+                              ),
+                              drawerList(
+                                icon: Icons.lock_clock,
+                                title: "Report",
+                              ),
+                              drawerList(
+                                icon: Icons.share_outlined,
+                                title: "Invite Friends",
+                              ),
+                              drawerList(
+                                icon: Icons.phone,
+                                title: "Talk to Management",
+                              ),
+                            ],
+                          ),
+                        ),
+                        Spacer(),
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            margin: EdgeInsets.only(
+                                left: 16, right: 16, bottom: buttonHeight),
+                            decoration: BoxDecoration(
+                              color: backgroundSecondary,
+                              borderRadius: BorderRadius.circular(borderRadius),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.logout_outlined,
+                                  color: white,
+                                  size: 18.0,
+                                ),
+                                SizedBox(
+                                  width: sectionSpacing + 7.1,
+                                ),
+                                Text(
+                                  "Logout",
+                                  style: drawerListText().copyWith(
+                                    color: white,
+                                    fontSize: AdaptiveTextSize()
+                                        .getadaptiveTextSize(
+                                            Get.context, sectionTitleFontSize),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -564,6 +692,30 @@ class DashBoard extends StatelessWidget {
           },
         );
       },
+    );
+  }
+
+  Widget drawerList({IconData icon, String title}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: backgroundSecondary,
+          ),
+          SizedBox(
+            width: sectionSpacing + 7.1,
+          ),
+          Text(
+            title,
+            style: drawerListText().copyWith(
+              fontSize: AdaptiveTextSize()
+                  .getadaptiveTextSize(Get.context, sectionTitleFontSize),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

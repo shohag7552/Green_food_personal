@@ -16,6 +16,7 @@ Color sectionTitleColor = HexColor("#292930");
 Color anotherWay = HexColor("#FF9933");
 
 Color blue = HexColor("#3385FF");
+Color orange = HexColor("#FFBB4C");
 
 
 /// abir end

@@ -48,3 +48,11 @@ TextStyle drawerButtonText() {
       letterSpacing: 0.18,
       height: 1.5);
 }
+
+TextStyle drawerListText() {
+  return TextStyle(
+      fontWeight: FontWeight.w400,
+      color: black,
+      letterSpacing: 0.18,
+      height: 1.5);
+}
