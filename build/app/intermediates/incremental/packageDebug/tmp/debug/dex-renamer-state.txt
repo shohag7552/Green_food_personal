@@ -1,4 +1,4 @@
-#Wed Sep 22 14:17:51 BDT 2021
+#Wed Sep 22 16:05:18 BDT 2021
 base.0=E\:\\Abir flutter project\\green food\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
