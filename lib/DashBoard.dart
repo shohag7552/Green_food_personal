@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import 'package:green_food/UI/Restaurant/restaurant.dart';
 import 'package:green_food/UI/views/sizing_information.dart';
 import 'package:green_food/utils/AdaptiveTextSize.dart';
 import 'package:green_food/utils/AppBar.dart';
@@ -216,21 +217,21 @@ class DashBoard extends StatelessWidget {
                                   icon: Icons.phone,
                                   title: "Talk to Management",
                                 ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(vertical: 10),
-                                    margin: EdgeInsets.only(
-                                      left: 16,
-                                      right: 16,
-                                      bottom: buttonHeight,
-                                      top: buttonHeight,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: backgroundSecondary,
-                                      borderRadius:
-                                          BorderRadius.circular(borderRadius),
-                                    ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 10),
+                                  margin: EdgeInsets.only(
+                                    left: 16,
+                                    right: 16,
+                                    bottom: buttonHeight,
+                                    top: buttonHeight,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: backgroundSecondary,
+                                    borderRadius:
+                                        BorderRadius.circular(borderRadius),
+                                  ),
+                                  child: InkWell(
+                                    onTap: () {},
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -830,87 +831,92 @@ class DashBoard extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 4),
-            child: Container(
+            child: InkWell(
+              onTap: () {
+                Get.to(RestaurantPage());
+              },
               child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: Image.asset(
-                        image,
-                        height: 160,
-                        width: 272,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Image.asset(
+                          image,
+                          height: 160,
+                          width: 272,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                  child: Row(
-                                children: [
-                                  Text(
-                                    items,
-                                    style: sectionTitle().copyWith(
-                                        fontSize: AdaptiveTextSize()
-                                            .getadaptiveTextSize(Get.context,
-                                                sectionTitleFontSize - 6)),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Icon(
-                                    Foundation.star,
-                                    color: backgroundSecondary,
-                                    size: AdaptiveTextSize()
-                                        .getadaptiveTextSize(
-                                            context, sectionSubTitleFontSize),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    rating,
-                                    style: sectionSubTitle().copyWith(
-                                        fontSize: AdaptiveTextSize()
-                                            .getadaptiveTextSize(Get.context,
-                                                sectionSubTitleFontSize)),
-                                  ),
-                                  SizedBox(
-                                    height: 2,
-                                  ),
-                                ],
-                              )),
-                            ],
-                          ),
-                          Text(
-                            description,
-                            style: sectionSubTitle().copyWith(
-                                fontSize: AdaptiveTextSize()
-                                    .getadaptiveTextSize(
-                                        Get.context, sectionSubTitleFontSize)),
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          Text(
-                            offer,
-                            style: sectionSubTitle().copyWith(
-                                fontSize: AdaptiveTextSize()
-                                    .getadaptiveTextSize(
-                                        Get.context, sectionSubTitleFontSize)),
-                          ),
-                        ],
+                      SizedBox(
+                        height: 10,
                       ),
-                    ),
-                  ],
+                      Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                    child: Row(
+                                  children: [
+                                    Text(
+                                      items,
+                                      style: sectionTitle().copyWith(
+                                          fontSize: AdaptiveTextSize()
+                                              .getadaptiveTextSize(Get.context,
+                                                  sectionTitleFontSize - 6)),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Icon(
+                                      Foundation.star,
+                                      color: backgroundSecondary,
+                                      size: AdaptiveTextSize()
+                                          .getadaptiveTextSize(
+                                              context, sectionSubTitleFontSize),
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      rating,
+                                      style: sectionSubTitle().copyWith(
+                                          fontSize: AdaptiveTextSize()
+                                              .getadaptiveTextSize(Get.context,
+                                                  sectionSubTitleFontSize)),
+                                    ),
+                                    SizedBox(
+                                      height: 2,
+                                    ),
+                                  ],
+                                )),
+                              ],
+                            ),
+                            Text(
+                              description,
+                              style: sectionSubTitle().copyWith(
+                                  fontSize: AdaptiveTextSize()
+                                      .getadaptiveTextSize(Get.context,
+                                          sectionSubTitleFontSize)),
+                            ),
+                            SizedBox(
+                              height: 2,
+                            ),
+                            Text(
+                              offer,
+                              style: sectionSubTitle().copyWith(
+                                  fontSize: AdaptiveTextSize()
+                                      .getadaptiveTextSize(Get.context,
+                                          sectionSubTitleFontSize)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

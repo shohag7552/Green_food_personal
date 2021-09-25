@@ -56,3 +56,11 @@ TextStyle drawerListText() {
       letterSpacing: 0.18,
       height: 1.5);
 }
+
+TextStyle appSubtitleText() {
+  return TextStyle(
+      fontWeight: FontWeight.w400,
+      color: white,
+      letterSpacing: 0.18,
+      height: 1.5);
+}
