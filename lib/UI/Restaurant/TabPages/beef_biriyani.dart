@@ -14,10 +14,48 @@ class BeefBiriyani extends StatelessWidget {
         itemCount: 5,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return listItems(context);
+          return InkWell(
+            onTap: () {
+              print(index);
+              sheet();
+            },
+            child: listItems(context),
+          );
         },
       ),
     );
+  }
+
+  Widget sheet() => BottomSheet(
+      onClosing: () {},
+      builder: (context) {
+        return Container(
+          child: Text(
+            "Bashmoti Premium rice with shahi massala beef make this platter supper delicious.",
+            style: TextStyle(fontSize: 18),
+          ),
+        );
+      });
+
+  Widget buildSheet() {
+    return DraggableScrollableSheet(
+        initialChildSize: 0.7,
+        // minChildSize: 0.5,
+        // maxChildSize: 0.9,
+        builder: (_, controller) {
+          return Container(
+            color: Colors.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Bashmoti Premium rice with shahi massala beef make this platter supper delicious.",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   Container listItems(BuildContext context) {
